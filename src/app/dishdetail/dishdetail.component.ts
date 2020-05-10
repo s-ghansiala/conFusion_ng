@@ -136,7 +136,7 @@ export class DishdetailComponent implements OnInit {
         //this.dishcopy.comments.push(this.comment);
         this.dishService.putDish(this.dish)
           .subscribe(dish => {
-            this.dish = dish; /*this.dishcopy = dish*/;
+            this.dish = dish;
           },
           errmess => { this.dish = null; /*this.dishcopy = null;*/ this.dishDetailErrMess = <any>errmess; });
         console.log(this.comment);

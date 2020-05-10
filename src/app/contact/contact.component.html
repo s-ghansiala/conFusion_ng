@@ -81,5 +81,9 @@
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
   </div>
+  <div fxFlex *ngIf="feedbackErrMess">
+    <h2>Error</h2>
+    <h4>{{feedbackErrMess}}</h4>
+  </div>
 
 </div>
