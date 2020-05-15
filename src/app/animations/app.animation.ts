@@ -37,3 +37,17 @@ export function expand() {
         ])
     ]);
 }
+
+export function feedbackVisibility() {
+    return trigger('feedbackVisibility', [
+        state('shown', style({
+            transform: 'scale(1.0)',
+            opacity: 1
+        })),
+        state('hidden', style({
+            transform: 'scale(0.5)',
+            opacity: 0
+        })),
+        transition('* => *', animate('0.5s ease-in-out'))
+    ]);
+}

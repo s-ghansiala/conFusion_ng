@@ -36,9 +36,8 @@
     </div>
   </div>
 
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" *ngIf = "showFeedbackForm" class="form-size">
     <h3>Send us your Feedback</h3>
-    <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
     <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
       <p>
@@ -85,5 +84,32 @@
     <h2>Error</h2>
     <h4>{{feedbackErrMess}}</h4>
   </div>
+
+  <div fxFlex *ngIf="spinnerOn" [@expand]>
+      <mat-spinner></mat-spinner> <h4>Loading . . . Please Wait!</h4>
+  </div>
+  <div fxFlex *ngIf="feedbackFromServer && submitted" [@feedbackVisibility]="feedbackVisibility" [@expand]>
+    <h2><b>Your Submission</b></h2>
+    <mat-list>
+      <mat-list-item>First Name: {{feedbackFromServer.firstname}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Last Name: {{feedbackFromServer.lastname}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Tel. Number: {{feedbackFromServer.telnum}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Email: {{feedbackFromServer.email}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Contact You?: {{feedbackFromServer.agree}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>How?: {{feedbackFromServer.contacttype}}</mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item>Feedback: {{feedbackFromServer.message}}</mat-list-item>
+    </mat-list>
+  </div>
+  <div fxFlex *ngIf="feedbackErrMess">
+    <h2>Error</h2>
+    <h4>{{feedbackErrMess}}</h4>
+  </div>
+
 
 </div>
